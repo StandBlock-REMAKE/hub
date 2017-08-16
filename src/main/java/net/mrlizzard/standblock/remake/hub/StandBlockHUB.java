@@ -1,7 +1,6 @@
 package net.mrlizzard.standblock.remake.hub;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -27,8 +26,10 @@ public class StandBlockHUB extends JavaPlugin {
             consoleLog("§7Fichier de configuration de map créé avec succès !");
         }
 
+        consoleLog("§7Démarrage de " + getDescription().getName() + " en version §c" + getDescription().getVersion() + "§7.");
         consoleLog("§fPlugin créé à l'occasion d'un évènement public pour StandBlock.");
         consoleLog("§fPlus d'informations à cette adresse: §bhttps://github.com/StandBlock-REMAKE/hub");
+        consoleLog("§f" + getDescription().getAuthors().size() + " développeur" + (getDescription().getAuthors().size() > 1 ? "s" : "") + " ont participé" + (getDescription().getAuthors().size() > 1 ? "s" : "") + " au développement de ce plugin.");
     }
 
     public void consoleLog(String message) {
