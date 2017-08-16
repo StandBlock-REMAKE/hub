@@ -8,5 +8,20 @@
     <artifactId>StandBlock HUB REMAKE</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <repositories>
+        <repository>
+            <id>destroystokyo-repo</id>
+            <url>https://repo.destroystokyo.com/repository/maven-snapshots/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.github.paperspigot</groupId>
+            <artifactId>paperspigot-api</artifactId>
+            <version>1.8.8-R0.1-20160806.221350-1</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 
 </project>
