@@ -7,4 +7,8 @@
 
 StandBlock et une grande partie du staff, ont décidé de, en mémoire à ce projet qui a prit tant de temps à se mettre en place, avec plus de 2 années de développement consécutives (plutôt intensives qu'on se le dise), d'organiser un évènement entièrement public disponible à tous, aux anciens inscrits comme aux personne n'ayant jamais entendu parlé ou n'ayant jamais trempé le petit orteil sur nos serveurs. Et en prime, j'ai décidé en tant que développeur principal du projet, de refaire tous les anciens plugins, avec les jeux et tous leurs fonctions, et de les mettre en projet sur Github pour faire profiter à tout le monde de ce (ancien) projet complètement majestueux.
 
-> **Information IMPORTANTE :** Ce projet étant terminé, aucune assistance ni aide ne sera fournie par moi et les développeurs qui ont participé à ce développement. Merci de ne pas m'harceler de messages pour me dire "ça marche pas". je vous en serais fortement reconnaissant.
+> **Information IMPORTANTE :** Ce projet étant terminé, aucune assistance ni aide ne sera fournie par moi et les développeurs qui ont participé à ce développement. Merci de ne pas nous harceler de messages pour dire "ça marche pas, aide moi". Nous vous en serons fortement reconnaissants.
+
+## Développeurs ayant participés 
+
+- [![MrLizzard](http://cravatar.eu/helmavatar/ce2675b3-fb54-4b88-98b0-494cf7dc1dab)](https://twitter.com/ColinetCyril) MrLizzard **(chef de projet)**
