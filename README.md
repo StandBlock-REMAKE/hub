@@ -9,7 +9,7 @@ StandBlock et une grande partie du staff, ont décidé de, en mémoire à ce pro
 
 > **Information IMPORTANTE :** Ce projet étant terminé, aucune assistance ni aide ne sera fournie par moi et les développeurs qui ont participé à ce développement. Merci de ne pas nous harceler de messages pour dire "ça marche pas, aide moi". Nous vous en serons fortement reconnaissants.
 
-## Développeurs ayant participés 
+## Personnes ayant participés à sa conception
 
 - MrLizzard **(développeur principal & chef de projet)**
 - Bestaylex **(chef de projet)**
