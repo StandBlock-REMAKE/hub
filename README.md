@@ -11,4 +11,5 @@ StandBlock et une grande partie du staff, ont décidé de, en mémoire à ce pro
 
 ## Développeurs ayant participés 
 
-- [![MrLizzard](http://cravatar.eu/helmavatar/ce2675b3-fb54-4b88-98b0-494cf7dc1dab)](https://twitter.com/ColinetCyril) MrLizzard **(chef de projet)**
+- MrLizzard **(développeur principal & chef de projet)**
+- Bestaylex **(chef de projet)**
