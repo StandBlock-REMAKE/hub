@@ -13,6 +13,6 @@ StandBlock et une grande partie du staff, ont décidé de, en mémoire à ce pro
 - MrLizzard **(développeur principal & chef de projet)**
 - Bestaylex **(chef de projet)**
 
-## Conseils
+## Informations sur les modifications
 
 Il vous est entièrement possible de modifier les sources et d'y apporter des modifications à votre guise. Les sources diffusées sont uniquement présentes pour tous les développeurs débutants qui souhaitent apprendre à maîtriser Java avec des APIs telles que Spigot (PaperSpigot dans notre cas) et BungeeCord (Waterfall dans notre cas). Vous pouvez tout aussi bien reprendre les idées et/ou les concepts présents dans ces plugins pour les incorporer à votre network.
