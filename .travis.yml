@@ -1,0 +1,4 @@
+dist: "Debian 8 (Jessie)"
+language: "java"
+jdk:
+  - oraclejdk8
