@@ -4,7 +4,8 @@
 
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/standblock-remake-one-year-later/)
 [![Build Status](https://travis-ci.org/StandBlock-REMAKE/hub.svg?branch=master)](https://travis-ci.org/StandBlock-REMAKE/hub)
-[![Github All Releases](https://img.shields.io/github/downloads/atom/atom/total.svg)]()
+[![GitHub license](https://img.shields.io/badge/license-AGPL-blue.svg)](https://raw.githubusercontent.com/StandBlock-REMAKE/hub/master/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/StandBlock-REMAKE/hub.svg)](https://github.com/StandBlock-REMAKE/hub/stargazers)
 
 StandBlock et une grande partie du staff, ont décidé de, en mémoire à ce projet qui a prit tant de temps à se mettre en place, avec plus de 2 années de développement consécutives (plutôt intensives qu'on se le dise), d'organiser un évènement entièrement public disponible à tous, aux anciens inscrits comme aux personne n'ayant jamais entendu parlé ou n'ayant jamais trempé le petit orteil sur nos serveurs. Et en prime, j'ai décidé en tant que développeur principal du projet, de refaire tous les anciens plugins, avec les jeux et tous leurs fonctions, et de les mettre en projet sur Github pour faire profiter à tout le monde de ce (ancien) projet complètement majestueux.
 
