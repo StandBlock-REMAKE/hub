@@ -4,7 +4,6 @@ import net.mrlizzard.standblock.remake.hub.config.EventSQLConnector;
 import net.mrlizzard.standblock.remake.hub.config.SQLConnector;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -16,11 +15,15 @@ import java.io.File;
  */
 public class StandBlockHUB extends JavaPlugin {
 
-    private boolean         debugMode;
-    private SQLConnector    connector;
+    private static StandBlockHUB    instance;
+
+    private boolean                 debugMode;
+    private SQLConnector            connector;
 
     @Override
     public void onEnable() {
+        instance = this;
+
         if(!getDataFolder().exists())
             getDataFolder().mkdir();
 
@@ -59,8 +62,14 @@ public class StandBlockHUB extends JavaPlugin {
         return connector;
     }
 
+    public static StandBlockHUB get() {
+        return instance;
+    }
+
     @Override
     public void onDisable() {
+        instance = null;
+
         consoleLog("§7Kick des joueurs encore présents (sécurité supplémentaire)");
         Bukkit.getOnlinePlayers().forEach(player -> player.kickPlayer("§cFermeture du serveur."));
 
