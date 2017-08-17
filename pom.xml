@@ -72,6 +72,14 @@
             <version>1.8.8-R0.1-20160806.221350-1</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.7-dmr</version>
+        </dependency>
+
     </dependencies>
 
 </project>

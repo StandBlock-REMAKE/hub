@@ -1,0 +1,10 @@
+## Core configuration
+core:
+  debug-mode: true
+
+## Database connector
+mysql:
+  host: 127.0.0.1
+  database: standblock-remake-event
+  username: root
+  password: root
