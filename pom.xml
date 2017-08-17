@@ -20,6 +20,7 @@
 
     <properties>
         <author>MrLizzard</author>
+        <website>https://github.com/StandBlock-REMAKE/hub</website>
         <mainClass>net.mrlizzard.standblock.remake.hub.StandBlockHUB</mainClass>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
