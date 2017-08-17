@@ -1,6 +1,10 @@
 # StandBlock HUB (Remake)
 
-[![Spigot](https://static.spigotmc.org/img/spigot.png)](https://spigotmc.org/)
+[![StandBlock Remake](http://i.imgur.com/Z1rT0nR.jpg)]
+
+<div style="text-align:center">
+    <img src ="http://i.imgur.com/Z1rT0nR.jpg" />
+</div>
 
 [![Author](https://img.shields.io/badge/author-MrLizzard-orange.svg)](https://twitter.com/ColinetCyril)
 [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/standblock-remake-one-year-later/)
