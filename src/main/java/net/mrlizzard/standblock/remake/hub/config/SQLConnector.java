@@ -13,10 +13,15 @@ import java.util.Map;
  */
 public abstract class SQLConnector {
 
-    protected Connection          connection;
-    protected StandBlockHUB       plugin;
+    protected Connection            connection;
+    protected StandBlockHUB         plugin;
+    protected String                database, username, password;
 
     public abstract void initiateConnection();
+
+    public abstract void createDatabaseAndConnect();
+
+    public abstract void importData(Connection conn);
 
     public Connection getConnection() {
         return connection;
@@ -25,5 +30,7 @@ public abstract class SQLConnector {
     public abstract ResultSet query(String query);
 
     public abstract void updateQuery(String query, Map<String, Object> datas);
+
+    public abstract void onDisable();
 
 }

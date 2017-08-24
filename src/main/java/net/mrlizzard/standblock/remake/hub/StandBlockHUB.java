@@ -30,7 +30,7 @@ public class StandBlockHUB extends JavaPlugin {
         File configFile = new File(getDataFolder(), "config.yml");
 
         if(!configFile.exists()) {
-            consoleLog("§7Fichier de configuration inexistant. Création en cours...");
+            consoleLog("§fFichier de configuration inexistant. Création en cours...");
             configFile.mkdir();
             // TODO: Copie du contenu se trouvant dans resources/config.yml dans les sources du plugin (try/catch)
             consoleLog("§7Fichier de configuration créé avec succès !");
@@ -38,7 +38,8 @@ public class StandBlockHUB extends JavaPlugin {
 
         debugMode = getConfig().getBoolean("core.debug-mode", false);
 
-        consoleLog("§7Démarrage de " + getDescription().getName() + " en version §c" + getDescription().getVersion() + "§7.");
+        consoleLog("§fDémarrage de " + getDescription().getName() + " en version §c" + getDescription().getVersion() + "§7.");
+        consoleLog("§fLe plugin est actuellement en mode " + (debugMode ? "§6DÉVELOPPEMENT" : "§aPRODUCTION") + "§f.");
         consoleLog("§fPlugin créé à l'occasion d'un évènement public pour StandBlock.");
         consoleLog("§fPlus d'informations à cette adresse: §bhttps://github.com/StandBlock-REMAKE/hub");
         consoleLog("§f" + getDescription().getAuthors().size() + " développeur" + (getDescription().getAuthors().size() > 1 ? "s" : "") + " ont participé" + (getDescription().getAuthors().size() > 1 ? "s" : "") + " au développement de ce plugin.");
@@ -47,15 +48,18 @@ public class StandBlockHUB extends JavaPlugin {
     }
 
     public void consoleLog(String message) {
-        getServer().getConsoleSender().sendMessage("§f[§2" + getDescription().getName() + "§f] §r" + message);
+        getServer().getConsoleSender().sendMessage("§f[§2" + getDescription().getName() + "§f] §r§f" + message);
+    }
+
+    public void consoleDebugLog(String message) {
+        consoleLog(ChatColor.LIGHT_PURPLE + "-> [DEBUG] §f" + message);
     }
 
     public void consoleErrorLog(String message, Exception error) {
         consoleLog(message);
 
-        if(debugMode) {
-            consoleLog(ChatColor.LIGHT_PURPLE + "-> [DEBUG] §f" + error.getMessage());
-        }
+        if(debugMode)
+            consoleDebugLog(error.getMessage());
     }
 
     public SQLConnector getConnector() {
@@ -69,11 +73,12 @@ public class StandBlockHUB extends JavaPlugin {
     @Override
     public void onDisable() {
         instance = null;
+        this.connector.onDisable();
 
-        consoleLog("§7Kick des joueurs encore présents (sécurité supplémentaire)");
+        consoleLog("Kick des joueurs encore présents (sécurité supplémentaire)");
         Bukkit.getOnlinePlayers().forEach(player -> player.kickPlayer("§cFermeture du serveur."));
 
-        consoleLog("§7Nettoyage des entitées présentes sur la map...");
+        consoleLog("Nettoyage des entitées présentes sur la map...");
         Bukkit.getWorlds().forEach(world -> world.getEntities().clear());
     }
 
