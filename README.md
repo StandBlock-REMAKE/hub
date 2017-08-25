@@ -21,3 +21,42 @@ StandBlock et une grande partie du staff, ont décidé de, en mémoire à ce pro
 ## Informations sur les modifications
 
 Il vous est entièrement possible de modifier les sources et d'y apporter des modifications à votre guise. Les sources diffusées sont uniquement présentes pour tous les développeurs débutants qui souhaitent apprendre à maîtriser Java avec des APIs telles que Spigot (PaperSpigot dans notre cas) et BungeeCord (Waterfall dans notre cas). Vous pouvez tout aussi bien reprendre les idées et/ou les concepts présents dans ces plugins pour les incorporer à votre network.
+
+## Requirements
+
+- Java 8 (JDK)
+- Maven
+- Spigot 1.8.8 (PaperSpigot)
+- MySQL
+
+## Installation
+
+Afin de pouvoir installer le plugin, il vous suffit de cloner ce repo `git clone https://github.com/StandBlock-REMAKE/hub.git` sur votre ordinateur et suivre les étapes suivantes.
+
+### Compiler le plugin
+
+Pour compiler le plugin, rendez-vous dans le dossier où se trouve les fichiers, ouvrez ensuite une invite de commande et éxécutez la commande suivante
+```
+maven clean install
+```
+Une fois le plugin correctement compilé, rendez-vous dans le dossier `/target` fraîchement créé, récupérez le fichier se terminant par `-jar-with-dependencies.jar` et glissez-le dans votre dossier plugins. Lancez le serveur et éteignez-le une fois complètement lancé.
+
+### Configuration
+
+Voici la présentation et la configuration de base du plugin. Vous devez modifier les accès SQL.
+```
+## Core configuration
+core:
+  debug-mode: true
+
+## Database connector
+mysql:
+  host: 127.0.0.1
+  database: standblock-remake-event
+  username: root
+  password: root
+```
+
+## Licence
+
+Licence GNU General Public Licence v3.0
