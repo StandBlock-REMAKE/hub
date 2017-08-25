@@ -3,10 +3,11 @@ package net.mrlizzard.standblock.remake.hub.config;
 import net.mrlizzard.standblock.remake.hub.StandBlockHUB;
 import org.apache.commons.lang.StringUtils;
 
-import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 
 /**
@@ -21,8 +22,12 @@ public class EventSQLConnector extends SQLConnector {
         this.username = plugin.getConfig().getString("mysql.username", "root");
         this.password = plugin.getConfig().getString("mysql.password", "root");
         this.database = plugin.getConfig().getString("mysql.database", "standblock-remake-event");
+        this.tables = Arrays.asList("players");
 
-        initiateConnection();
+        try {
+            initiateConnection();
+            checkTables();
+        } catch(Exception ignored) {}
     }
 
     @Override
@@ -72,6 +77,24 @@ public class EventSQLConnector extends SQLConnector {
     }
 
     @Override
+    public void checkTables() throws SQLException {
+        DatabaseMetaData databaseMetaData = connection.getMetaData();
+        ArrayList tablesList = new ArrayList();
+        ResultSet resultSet = databaseMetaData.getTables(this.database, null, null, null);
+
+        try {
+            while(resultSet.next()) {
+                tablesList.add(resultSet.getString("TABLE_NAME"));
+            }
+        } finally {
+            resultSet.close();
+        }
+
+        plugin.consoleLog("§fListe des tables présentes: §e" + StringUtils.join(tablesList, ", "));
+        plugin.consoleLog("§f" + (((this.tables.size() - tablesList.size()) == 0) ? "Aucunes" : (this.tables.size() - tablesList.size())) + " tables manquantes.");
+    }
+
+    @Override
     public void importData(Connection conn) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
@@ -110,13 +133,13 @@ public class EventSQLConnector extends SQLConnector {
 
     @Override
     public ResultSet query(String query) {
-        Statement statement = null;
+        PreparedStatement statement = null;
         ResultSet resultSet = null;
 
         try {
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(query);
             plugin.consoleDebugLog("Execution basic query: §e" + query + "§f.");
+            statement = connection.prepareStatement(query);
+            resultSet = statement.executeQuery();
             plugin.consoleDebugLog("Résultats retournés: " + resultSet.getFetchSize());
 
             return resultSet;

@@ -2,8 +2,10 @@ package net.mrlizzard.standblock.remake.hub;
 
 import net.mrlizzard.standblock.remake.hub.config.EventSQLConnector;
 import net.mrlizzard.standblock.remake.hub.config.SQLConnector;
+import net.mrlizzard.standblock.remake.hub.listeners.player.PlayerConnectionListener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -24,42 +26,46 @@ public class StandBlockHUB extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        if(!getDataFolder().exists())
-            getDataFolder().mkdir();
+        if(!this.getDataFolder().exists())
+            this.getDataFolder().mkdir();
 
-        File configFile = new File(getDataFolder(), "config.yml");
+        File configFile = new File(this.getDataFolder(), "config.yml");
 
         if(!configFile.exists()) {
-            consoleLog("§fFichier de configuration inexistant. Création en cours...");
+            this.consoleLog("§fFichier de configuration inexistant. Création en cours...");
             configFile.mkdir();
             // TODO: Copie du contenu se trouvant dans resources/config.yml dans les sources du plugin (try/catch)
-            consoleLog("§7Fichier de configuration créé avec succès !");
+            this.consoleLog("§7Fichier de configuration créé avec succès !");
         }
 
-        debugMode = getConfig().getBoolean("core.debug-mode", false);
+        this.debugMode = this.getConfig().getBoolean("core.debug-mode", false);
 
-        consoleLog("§fDémarrage de " + getDescription().getName() + " en version §c" + getDescription().getVersion() + "§7.");
-        consoleLog("§fLe plugin est actuellement en mode " + (debugMode ? "§6DÉVELOPPEMENT" : "§aPRODUCTION") + "§f.");
-        consoleLog("§fPlugin créé à l'occasion d'un évènement public pour StandBlock.");
-        consoleLog("§fPlus d'informations à cette adresse: §bhttps://github.com/StandBlock-REMAKE/hub");
-        consoleLog("§f" + getDescription().getAuthors().size() + " développeur" + (getDescription().getAuthors().size() > 1 ? "s" : "") + " ont participé" + (getDescription().getAuthors().size() > 1 ? "s" : "") + " au développement de ce plugin.");
+        this.consoleLog("§fDémarrage de " + this.getDescription().getName() + " en version §c" + this.getDescription().getVersion() + "§7.");
+        this.consoleLog("§fLe plugin est actuellement en mode " + (debugMode ? "§6DÉVELOPPEMENT" : "§aPRODUCTION") + "§f.");
+        this.consoleLog("§fPlugin créé à l'occasion d'un évènement public pour StandBlock.");
+        this.consoleLog("§fPlus d'informations à cette adresse: §bhttps://github.com/StandBlock-REMAKE/hub");
+        this.consoleLog("§f" + this.getDescription().getAuthors().size() + " développeur" + (this.getDescription().getAuthors().size() > 1 ? "s" : "") + " ont participé" + (this.getDescription().getAuthors().size() > 1 ? "s" : "") + " au développement de ce plugin.");
 
-        connector = new EventSQLConnector(this);
+        this.connector = new EventSQLConnector(this);
+
+        // Listeners
+        PluginManager pm = this.getServer().getPluginManager();
+        pm.registerEvents(new PlayerConnectionListener(), this);
     }
 
     public void consoleLog(String message) {
-        getServer().getConsoleSender().sendMessage("§f[§2" + getDescription().getName() + "§f] §r§f" + message);
+        this.getServer().getConsoleSender().sendMessage("§f[§2" + getDescription().getName() + "§f] §r§f" + message);
     }
 
     public void consoleDebugLog(String message) {
-        consoleLog(ChatColor.LIGHT_PURPLE + "-> [DEBUG] §f" + message);
+        this.consoleLog(ChatColor.LIGHT_PURPLE + "-> [DEBUG] §f" + message);
     }
 
     public void consoleErrorLog(String message, Exception error) {
-        consoleLog(message);
+        this.consoleLog(message);
 
         if(debugMode)
-            consoleDebugLog(error.getMessage());
+            this.consoleDebugLog(error.getMessage());
     }
 
     public SQLConnector getConnector() {
@@ -75,10 +81,10 @@ public class StandBlockHUB extends JavaPlugin {
         instance = null;
         this.connector.onDisable();
 
-        consoleLog("Kick des joueurs encore présents (sécurité supplémentaire)");
+        this.consoleLog("Kick des joueurs encore présents (sécurité supplémentaire)");
         Bukkit.getOnlinePlayers().forEach(player -> player.kickPlayer("§cFermeture du serveur."));
 
-        consoleLog("Nettoyage des entitées présentes sur la map...");
+        this.consoleLog("Nettoyage des entitées présentes sur la map...");
         Bukkit.getWorlds().forEach(world -> world.getEntities().clear());
     }
 

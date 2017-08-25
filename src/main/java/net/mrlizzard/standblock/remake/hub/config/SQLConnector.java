@@ -4,6 +4,8 @@ import net.mrlizzard.standblock.remake.hub.StandBlockHUB;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,10 +18,13 @@ public abstract class SQLConnector {
     protected Connection            connection;
     protected StandBlockHUB         plugin;
     protected String                database, username, password;
+    protected List<String>          tables;
 
     public abstract void initiateConnection();
 
     public abstract void createDatabaseAndConnect();
+
+    public abstract void checkTables() throws SQLException;
 
     public abstract void importData(Connection conn);
 
@@ -32,5 +37,9 @@ public abstract class SQLConnector {
     public abstract void updateQuery(String query, Map<String, Object> datas);
 
     public abstract void onDisable();
+
+    public List<String> getTables() {
+        return tables;
+    }
 
 }

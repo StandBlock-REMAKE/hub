@@ -1,8 +1,11 @@
 package net.mrlizzard.standblock.remake.hub.objects;
 
 import net.mrlizzard.standblock.remake.hub.StandBlockHUB;
+import net.mrlizzard.standblock.remake.hub.utils.RankUtils;
 import org.bukkit.entity.Player;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -18,6 +21,7 @@ public class StandBlockPlayer {
 
     private Player          player;
     private UUID            uuid;
+    private RankUtils       rank;
 
     private int             experience;
 
@@ -26,13 +30,22 @@ public class StandBlockPlayer {
         this.player = player;
 
         try {
-            this.experience = StandBlockHUB.get().getConnector().query("SELECT 'experience' WHERE 'uuid' = '" + this.uuid.toString() + "'").getInt("experience");
-        } catch(Exception error) {
-            StandBlockHUB.get().consoleErrorLog("§cErreur lors de la mise en cache des données de " + player.getName(), error);
+            ResultSet resultSet = StandBlockHUB.get().getConnector().query("SELECT * FROM players WHERE uuid = '" + this.getUuid() + "'");
+
+            while(resultSet.next()) {
+                this.experience = resultSet.getInt("experience");
+                this.rank = RankUtils.getRankById(resultSet.getInt("rank"));
+            }
+        } catch(Exception ignored) {
+            StandBlockHUB.get().consoleLog("§cErreur lors de la mise en cache des données de " + player.getName());
         }
 
         // On ajoute le joueur à la base de donnée
         addPlayer(player, this);
+    }
+
+    public boolean hasPermission(String perm) {
+        return this.rank.getPermissions().contains(perm);
     }
 
     public int getExperience() {
@@ -41,6 +54,10 @@ public class StandBlockPlayer {
 
     public Player getPlayer() {
         return player;
+    }
+
+    public RankUtils getRank() {
+        return rank;
     }
 
     public UUID getUuid() {
