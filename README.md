@@ -37,7 +37,7 @@ Afin de pouvoir installer le plugin, il vous suffit de cloner ce repo `git clone
 
 Pour compiler le plugin, rendez-vous dans le dossier où se trouve les fichiers, ouvrez ensuite une invite de commande et éxécutez la commande suivante
 ```
-maven clean install
+mvn clean install
 ```
 Une fois le plugin correctement compilé, rendez-vous dans le dossier `/target` fraîchement créé, récupérez le fichier se terminant par `-jar-with-dependencies.jar` et glissez-le dans votre dossier plugins. Lancez le serveur et éteignez-le une fois complètement lancé.
 
